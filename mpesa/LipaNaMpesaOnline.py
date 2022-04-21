@@ -88,7 +88,7 @@ def sendSTK(phone_number, amount, orderId=0, transaction_id=None):
     }
     print("Phonenumber: {}, Amount: {}".format(phone_number, amount))
     request = {
-        "BusinessShortCode": shortcode,
+        "BusinessShortCode": int(shortcode),
         "Password": encoded,
         "Timestamp": time_now,
         "TransactionType": "CustomerPayBillOnline",
@@ -97,6 +97,7 @@ def sendSTK(phone_number, amount, orderId=0, transaction_id=None):
         "PartyB": shortcode,
         "PhoneNumber": phone_number,
         "CallBackURL": "{}/mpesa/confirm/".format(HOST_NAME),
+        
         "AccountReference": phone_number,
         "TransactionDesc": "Payment for {}".format(phone_number)
     }
